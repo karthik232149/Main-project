@@ -1,0 +1,77 @@
+
+{% extends 'Admin/homeindex.html' %}
+{% block body %}
+     <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<form action="/Aiyoga/edit_trainer_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+{% csrf_token %}
+<input type="hidden" name="id" value="{{ data.id }}">
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row">Name</th>
+      <td><input type="text" value="{{ data.Name }}" name="textfield"  pattern="[A-Za-z ]+" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><input type="text" id="email" name="textfield2" value="{{ data.EmaiL }}" pattern="[a-z_0-9]{2,30}[@][a-z]{2,10}[.][a-z.]{2,20}" class="form-control" />
+      <span id="email_error"></span>
+      </td>
+    </tr>
+    <tr>
+      <th height="36" scope="row">Phone</th>
+      <td><input type="text" name="textfield3"value="{{ data.Phone }}" pattern="[6789][0123456789]{9}" maxlength="10" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Place</th>
+      <td><input type="text" name="textfield4"value="{{ data.PLACE }}" pattern="[A-Za-z ]+" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Post</th>
+      <td><input type="text" name="textfield7" value="{{ data.Post }}" class="form-control" pattern="[A-Za-z ]+" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Pin</th>
+      <td><input type="text" name="textfield5"value="{{ data.Pin }}" pattern="[6][0123456789]{5}" maxlength="6" required class="form-control" /></td>
+    </tr>
+      <tr>
+      <th scope="row">Experience</th>
+      <td><input type="text" name="textfield8"value="{{ data.Experience }}" " /></td>
+    </tr>
+    <tr>
+      <th scope="row">Dob</th>
+      <td><input type="date" id="dob" name="textfield6"value="{{ data.Dob|date:'Y-m-d'}}" required class="form-control"  /></td>
+    </tr>
+     <tr>
+      <th scope="row">Gender</th>
+      <td><select name="RadioGroup1" class="form-control">
+
+          <option value="Male" {% if data.Gender == "Male" %} selected {% endif %}>Male</option>
+          <option value="Female" {% if data.Gender == "Female" %} selected {% endif %}>Female</option>
+          <option value="Others" {% if data.Gender == "Others" %} selected {% endif %}>Others</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th scope="row">Photo</th>
+      <td><img src="{{ data.Photo }}" width="100" height="100">
+          <input type="file" name="photo" /></td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input name="Update" type="submit" id="Update" value="Update"  class="btn btn-info"/></td>
+    </tr>
+  </table>
+</form>
+<script>
+    document.getElementById("dob").addEventListener("click", function () {
+        let currentYY = parseInt(new Date().toJSON().slice(0, 4))-18;
+        let currentMM = new Date().toJSON().slice(5, 7);
+        let currentDD = new Date().toJSON().slice(8, 10);
+        var fdob = currentYY.toString()+'-'+currentMM.toString()+'-'+currentDD.toString()
+        this.setAttribute('max',fdob);
+    })
+</script>
+
+
+
+{% endblock %}
+

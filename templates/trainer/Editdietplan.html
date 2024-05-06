@@ -1,0 +1,37 @@
+{% extends 'trainer/homeindex.html' %}
+{% block body %}
+<body>
+<form action="/Aiyoga/Editdietplan_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+    <input type="hidden" name="id"value="{{ data.id }}">
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row">MENU</th>
+      <td><input type="text" name="textfield" class="form-control" value="{{ data.menu }}"  required/></td>
+    </tr>
+    <tr>
+      <th scope="row">QUANTITY</th>
+      <td><input type="text" name="textfield2" class="form-control" value="{{ data.quantity }}"  required/></td>
+    </tr>
+     <tr>
+      <th scope="row">TIME</th>
+      <td><input type="text" name="textfield3" class="form-control" value="{{ data.time }}"  required/></td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input name="ADD" type="submit" id="ADD" value="UPDATE" class="btn btn-info" /></td>
+    </tr>
+  </table>
+</form>
+<script>
+    document.getElementById("dob").addEventListener("click", function () {
+        let currentYY = parseInt(new Date().toJSON().slice(0, 4))-18;
+        let currentMM = new Date().toJSON().slice(5, 7);
+        let currentDD = new Date().toJSON().slice(8, 10);
+{#        alert(currentDD)#}
+        var fdob = currentYY.toString()+'-'+currentMM.toString()+'-'+currentDD.toString()
+        this.setAttribute('max',fdob);
+    })
+</script>
+</body>
+{% endblock %}

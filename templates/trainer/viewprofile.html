@@ -1,0 +1,44 @@
+{% extends "trainer/homeindex.html" %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+    {%csrf_token  %}
+    <h1 align="center"> Profile</h1>
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><img src="{{ data.Photo }}" width="100" height="100"> </td>
+    </tr>
+    <tr>
+      <th scope="row">Name</th>
+      <td>&nbsp;{{ data.Name }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Gender</th>
+      <td>&nbsp;{{ data.Gender }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td>{{ data.EmaiL }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Phone</th>
+      <td> {{ data.Phone }}</td>
+    </tr>
+      <tr>
+      <th scope="row">Experience</th>
+      <td> {{ data.Experience }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Address</th>
+      <td>&nbsp;{{ data.PLACE }}<br> {{ data.Post }} <br> {{ data.Pin }} </td>
+    </tr>
+      <tr align="center">
+          <td colspan="2">
+              <a href="/Aiyoga/Trainer_edit_profile/#about" class="btn btn-success">Edit</a>
+          </td>
+      </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

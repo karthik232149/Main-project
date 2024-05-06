@@ -1,0 +1,262 @@
+{% extends 'trainer/homeindex.html' %}
+{% block body %}
+<body>
+<form action="/Aiyoga/Adddietchart_post/" method="post"  enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+    <h1 align="center"> Add diet chart</h1>
+  <table class="table table-bordered">
+       <tr>
+      <th scope="row">HEIGHT</th>
+      <td><input type="text" name="textfield4" id="height" class="form-control"   required/></td>
+    </tr> <tr>
+      <th scope="row">WEIGHT</th>
+      <td><input type="text" name="textfield5" id="weight" class="form-control"   required/></td>
+    </tr> <tr>
+      <th scope="row">AGE</th>
+      <td><input type="text" name="textfield6" class="form-control"   required/></td>
+    </tr> <tr>
+      <th scope="row">GENDER</th>
+      <td><select name="textfield7">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Others">Others</option>
+      </select></td>
+    </tr> <tr>
+      <th scope="row">OBESITY</th>
+      <td><select name="textfield8">
+          <option value="Normal">Normal</option>
+          <option value="OverWeight">OverWeight</option>
+          <option value="Obesity">Obesity</option>
+      </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">BLOOD PRESSURE</th>
+      <td><select name="textfield9">
+          <option value="Low">Low</option>
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+      </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">DIABETES</th>
+      <td>
+          <select name="textfield10">
+          <option value="Low">Low</option>
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+      </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">CHOLESTROL</th>
+      <td> <select name="textfield11">
+          <option value="low-density lipoprotein">low-density lipoprotein</option>
+          <option value="high-density lipoprotein">high-density lipoprotein</option>
+          <option value="Lipoprotein Cholesterol">Lipoprotein Cholesterol</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">ALCOHOL USE</th>
+      <td>
+          <select name="textfield12">
+          <option value="Light or social drinkers">Light or social drinkers</option>
+          <option value="Moderate drinker">Moderate drinker</option>
+          <option value="Heavy drinkers">Heavy drinkers</option>
+          <option value="No Use">No Use</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">DRUG USE</th>
+      <td> <select name="textfield13">
+          <option value="stimulants">stimulants</option>
+          <option value="narcotics">narcotics</option>
+          <option value="sedatives">sedatives</option>
+          <option value="No ">No</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">SMOKING</th>
+      <td>
+           <select name="textfield14">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr><tr>
+      <th scope="row">HEADACHES</th>
+      <td>
+           <select name="textfield27">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr>
+
+      <tr>
+      <th scope="row">ASTHMA</th>
+      <td>
+            <select name="textfield15">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">HEART PROBLEM</th>
+      <td>
+           <select name="textfield16">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">CANCER</th>
+      <td>
+           <select name="textfield17">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">STROKE</th>
+      <td> <select name="textfield18">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">BONE JOINT</th>
+      <td> <select name="textfield19">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">KIDNEY PROBLEM</th>
+      <td> <select name="textfield20">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">LIVER PROBLEM</th>
+      <td> <select name="textfield21">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">DEPRESSION</th>
+      <td> <select name="textfield22">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">ALLERGIES</th>
+      <td> <select name="textfield23">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">ARTHRITIS</th>
+      <td>
+           <select name="textfield24">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">PREGNANCY</th>
+      <td> <select name="textfield25">
+          <option value="No">No</option>
+          <option value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">BMI</th>
+      <td><input type="text" name="textfield26" id="bmi" class="form-control" readonly   required/></td>
+    </tr>
+       <tr>
+      <th scope="row">TIME</th>
+      <td><input type="time" id="datetime" name="textfield28" onchange="formatTime()" required>
+
+{#          <input type="time" name="textfield28" id="time" class="form-control"   required/>#}
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">MENU</th>
+      <td><input type="text" name="textfield" class="form-control"   required/></td>
+    </tr>
+    <tr>
+      <th scope="row">QUANTITY</th>
+      <td>
+          <textarea name="textfield2" class="form-control" required></textarea></td>
+    </tr>
+
+
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input name="ADD" type="submit" id="ADD" value="ADD" class="btn btn-info" /></td>
+    </tr>
+  </table>
+</form>
+<script>
+{#    document.getElementById("dob").addEventListener("click", function () {#}
+{#        let currentYY = parseInt(new Date().toJSON().slice(0, 4))-18;#}
+{#        let currentMM = new Date().toJSON().slice(5, 7);#}
+{#        let currentDD = new Date().toJSON().slice(8, 10);#}
+{#        alert(currentDD)#}
+{#        var fdob = currentYY.toString()+'-'+currentMM.toString()+'-'+currentDD.toString()#}
+{#        this.setAttribute('max',fdob);#}
+{#    })#}
+{#</script>#}
+    function calculateBMI() {
+    var height = parseFloat(document.getElementById('height').value);
+    var weight = parseFloat(document.getElementById('weight').value);
+
+    // Check if height and weight are valid numbers
+    if (!isNaN(height) && !isNaN(weight) && height > 0 && weight > 0) {
+      // Calculate BMI
+      var bmi = weight / Math.pow(height / 100, 2); // Convert height to meters
+      // Display BMI in the BMI text field
+      document.getElementById('bmi').value = bmi.toFixed(2); // Round to 2 decimal places
+    } else {
+      // If height or weight is not valid, display an error or handle it accordingly
+      document.getElementById('bmi').value = ''; // Clear the BMI field
+    }
+  }
+
+  // Attach the calculateBMI function to the change event of height and weight fields
+  document.getElementById('height').addEventListener('input', calculateBMI);
+  document.getElementById('weight').addEventListener('input', calculateBMI);
+</script>
+     <script>
+    function formatTime() {
+      var input = document.getElementById('datetime');
+      var datetime = new Date(input.value);
+
+      var hours = datetime.getHours();
+      var minutes = datetime.getMinutes();
+      var meridiem = hours >= 12 ? 'PM' : 'AM';
+
+      // Convert hours to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12; // '0' should be '12' in 12-hour clock
+
+      // Add leading zeros to minutes
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+
+      // Update the input value with formatted time
+      input.value = datetime.toISOString().slice(0,16) + ' ' + hours + ':' + minutes + ' ' + meridiem;
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'Admin/homeindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/Aiyoga/deleted_trainer_Post/#about">
+{%csrf_token %}
+ <h1 align="center"> Deleted trainer</h1>
+  <table class="pull-left">
+    <tr>
+      <th scope="row"><input type="text" name="textfield" /></th>
+      <td><input name="Search" type="submit" id="Search" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row">Sl no </th>
+      <td>Name</td>
+      <td>Gender</td>
+      <td>DOB</td>
+      <td>Email</td>
+      <td>Phone</td>
+      <td>Experience</td>
+      <td>Address</td>
+{#      <td>&nbsp;</td>#}
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td><img name="" src="{{ i.Photo }}" width="100" height="32" alt="" /><br>
+      {{ i.Name }}   &nbsp;</td>
+      <td>{{ i.Gender }}</td>
+      <td>{{ i.Dob }}&nbsp;</td>
+      <td>{{ i.EmaiL }}&nbsp;</td>
+      <td>{{ i.Phone }}&nbsp;</td>
+       <td>{{ i.Experience }}</td>
+      <td>&nbsp;{{ i.Post }}<br>
+      {{ i.Pin }}&nbsp;<br>
+{#      <td><a href="/Aiyoga/edittrainer/{{ i.id }} #about" class="btn btn-info">Edit</a></td>#}
+{#      <td><a href="/Aiyoga/delete_trainer/{{ i.id }}" class="btn btn-danger" onclick="return confirm('Are You Sure?')">Delete</a></td>#}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

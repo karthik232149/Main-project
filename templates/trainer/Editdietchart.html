@@ -1,0 +1,238 @@
+{% extends 'trainer/homeindex.html' %}
+{% block body %}
+<body>
+<form action="/Aiyoga/Editdietchart_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered"><input type="hidden" name="id" value="{{ data.id }}">
+       <tr>
+      <th scope="row">HEIGHT</th>
+      <td><input type="text" name="textfield4" id="height" value="{{ data.Height }}" class="form-control"   required/></td>
+    </tr> <tr>
+      <th scope="row">WEIGHT</th>
+      <td><input type="text" name="textfield5" id="weight" value="{{ data.Weight }}" class="form-control"   required/></td>
+    </tr> <tr>
+      <th scope="row">AGE</th>
+      <td><input type="text" name="textfield6" id="age" value="{{ data.Age }}" class="form-control"   required/></td>
+    </tr> <tr>
+      <th scope="row">GENDER</th>
+      <td><select name="textfield7">
+          <option {% if data.Gender == "Male" %} selected {% endif %} value="Male">Male</option>
+          <option {% if data.Gender == "Female" %} selected {% endif %} value="Female">Female</option>
+          <option {% if data.Gender == "Others" %} selected {% endif %} value="Others">Others</option>
+      </select></td>
+    </tr> <tr>
+      <th scope="row">OBESITY</th>
+      <td><select name="textfield8">
+          <option {% if data.Obesity == "Normal" %} selected {% endif %} value="Normal">Normal</option>
+          <option {% if data.Obesity == "OverWeight" %} selected {% endif %} value="OverWeight">OverWeight</option>
+          <option {% if data.Obesity == "Obesity" %} selected {% endif %} value="Obesity">Obesity</option>
+      </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">BLOOD PRESSURE</th>
+      <td><select name="textfield9">
+          <option {% if data.Blood_pressure == "Low" %} selected {% endif %} value="Low">Low</>
+          <option {% if data.Blood_pressure == "Normal" %} selected {% endif %} value="Normal">Normal</option>
+          <option {% if data.Blood_pressure == "High" %} selected {% endif %} value="High">High</option>
+      </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">DIABETES</th>
+      <td>
+          <select name="textfield10">
+          <option  {% if data.Diabetes == "Low" %} selected {% endif %} value="Low">Low</option>
+          <option  {% if data.Diabetes == "Normal" %} selected {% endif %} value="Normal">Normal</option>
+          <option  {% if data.Diabetes == "High" %} selected {% endif %} value="High">High</option>
+      </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">CHOLESTROL</th>
+      <td> <select name="textfield11">
+          <option {% if data.Cholesterol == "low-density lipoprotein" %} selected {% endif %} value="low-density lipoprotein">low-density lipoprotein</option>
+          <option {% if data.Cholesterol == "high-density lipoprotein" %} selected {% endif %} value="high-density lipoprotein">high-density lipoprotein</option>
+          <option {% if data.Cholesterol == "Lipoprotein Cholesterol" %} selected {% endif %} value="Lipoprotein Cholesterol">Lipoprotein Cholesterol</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">ALCOHOL USE</th>
+      <td>
+          <select name="textfield12">
+          <option {% if data.Alcohol_use == "Light or social drinkers" %} selected {% endif %} value="Light or social drinkers">Light or social drinkers</option>
+          <option  {% if data.Alcohol_use == "Moderate drinker" %} selected {% endif %} value="Moderate drinker">Moderate drinker</option>
+          <option {% if data.Alcohol_use == "Heavy drinkers" %} selected {% endif %} value="Heavy drinkers">Heavy drinkers</option>
+          <option {% if data.Alcohol_use == "No Use" %} selected {% endif %} value="No Use">No Use</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">DRUG USE</th>
+      <td> <select name="textfield13">
+          <option  {% if data.Drug_use == "stimulants" %} selected {% endif %} value="stimulants">stimulants</option>
+          <option {% if data.Drug_use == "narcotics" %} selected {% endif %} value="narcotics">narcotics</option>
+          <option {% if data.Drug_use == "sedatives" %} selected {% endif %} value="sedatives">sedatives</option>
+          <option {% if data.Drug_use == "No" %} selected {% endif %} value="No ">No</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">SMOKING</th>
+      <td>
+           <select name="textfield14">
+          <option {% if data.Smoking == "No" %} selected {% endif %} value="No">No</option>
+          <option  {% if data.Smoking == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr><tr>
+      <th scope="row">HEADACHES</th>
+      <td>
+           <select name="textfield27">
+          <option {% if data.Headaches == "No" %} selected {% endif %} value="No">No</option>
+          <option  {% if data.Headaches == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr>
+
+      <tr>
+      <th scope="row">ASTHMA</th>
+      <td>
+            <select name="textfield15">
+          <option {% if data.Asthma == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Asthma == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">HEART PROBLEM</th>
+      <td>
+           <select name="textfield16">
+          <option {% if data.Heart_problems == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Heart_problems == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">CANCER</th>
+      <td>
+           <select name="textfield17">
+          <option  {% if data.Cancer == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Cancer == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">STROKE</th>
+      <td> <select name="textfield18">
+          <option {% if data.Stroke == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Stroke == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">BONE JOINT</th>
+      <td> <select name="textfield19">
+          <option {% if data.Bone_joint == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Bone_joint == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">KIDNEY PROBLEM</th>
+      <td> <select name="textfield20">
+          <option {% if data.Kidney_problem == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Kidney_problem == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">LIVER PROBLEM</th>
+      <td> <select name="textfield21">
+          <option {% if data.Liver_problems == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Liver_problems == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">DEPRESSION</th>
+      <td> <select name="textfield22">
+          <option {% if data.Depression == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Depression == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">ALLERGIES</th>
+      <td> <select name="textfield23">
+          <option {% if data.Allergies == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Allergies == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">ARTHRITIS</th>
+      <td>
+           <select name="textfield24">
+          <option {% if data.Arthritis == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Arthritis == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+      </td>
+    </tr> <tr>
+      <th scope="row">PREGNANCY</th>
+      <td> <select name="textfield25">
+          <option {% if data.Pregnancy == "No" %} selected {% endif %} value="No">No</option>
+          <option {% if data.Pregnancy == "Yes" %} selected {% endif %} value="Yes ">Yes</option>
+        </select>
+
+      </td>
+    </tr> <tr>
+      <th scope="row">BMI</th>
+      <td><input type="text" name="textfield26" value="{{ data.Bmi }}" id="bmi" class="form-control" readonly   required/></td>
+    </tr>
+    <tr>
+      <th scope="row">TIME</th>
+      <td><input type="time" name="textfield28" value="{{ data.Bmi }}" id="time" class="form-control"    required/></td>
+    </tr>
+    <tr>
+      <th scope="row">MENU</th>
+      <td><input type="text" name="textfield" id="menu" value="{{ data.menu }}" class="form-control"   required/></td>
+    </tr>
+    <tr>
+      <th scope="row">QUANTITY</th>
+      <td>
+          <textarea name="textfield2" id="quantity"  class="form-control" required>{{ data.quantity }}</textarea></td>
+    </tr>
+
+
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input name="ADD" type="submit" id="ADD" value="Update" class="btn btn-info" /></td>
+    </tr>
+  </table>
+</form>
+<script>
+{#    document.getElementById("dob").addEventListener("click", function () {#}
+{#        let currentYY = parseInt(new Date().toJSON().slice(0, 4))-18;#}
+{#        let currentMM = new Date().toJSON().slice(5, 7);#}
+{#        let currentDD = new Date().toJSON().slice(8, 10);#}
+{#        alert(currentDD)#}
+{#        var fdob = currentYY.toString()+'-'+currentMM.toString()+'-'+currentDD.toString()#}
+{#        this.setAttribute('max',fdob);#}
+{#    })#}
+{#</script>#}
+    function calculateBMI() {
+    var height = parseFloat(document.getElementById('height').value);
+    var weight = parseFloat(document.getElementById('weight').value);
+
+    // Check if height and weight are valid numbers
+    if (!isNaN(height) && !isNaN(weight) && height > 0 && weight > 0) {
+      // Calculate BMI
+      var bmi = weight / Math.pow(height / 100, 2); // Convert height to meters
+      // Display BMI in the BMI text field
+      document.getElementById('bmi').value = bmi.toFixed(2); // Round to 2 decimal places
+    } else {
+      // If height or weight is not valid, display an error or handle it accordingly
+      document.getElementById('bmi').value = ''; // Clear the BMI field
+    }
+  }
+
+  // Attach the calculateBMI function to the change event of height and weight fields
+  document.getElementById('height').addEventListener('input', calculateBMI);
+  document.getElementById('weight').addEventListener('input', calculateBMI);
+</script>
+{% endblock %}

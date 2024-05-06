@@ -1,0 +1,34 @@
+{% extends 'trainer/homeindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/Aiyoga/trainer_Viewtips_post/#about">
+{% csrf_token %}
+<h1 align="center"> View tips</h1>
+  <table class="pull-left">
+    <tr>
+      <th scope="row"><input type="text" name="textfield" /></th>
+      <td><input name="Search" type="submit" id="Search" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row">Sl no </th>
+      <td>Title</td>
+      <td>Description</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td>{{ i.Title }}</td>
+      <td>{{ i.Description }}&nbsp;</td>
+      <td><a href="/Aiyoga/Edittips/{{ i.id }}#about" class="btn btn-info">Edit</a></td>
+      <td><a href="/Aiyoga/Deletetips/{{ i.id }}" class="btn btn-danger" onclick="return confirm('Are You Sure?')">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

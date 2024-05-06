@@ -1,0 +1,28 @@
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+{% extends 'Admin/homeindex.html' %}
+{% block body %}
+<body>
+<form action="/Aiyoga/sendreplypost/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered">
+ <input type="hidden" name="id" value="{{ id }}">
+    <tr>
+      <th scope="row">Reply</th>
+      <td>
+          <textarea name="textarea" class="form-control" required></textarea></td>
+    </tr>
+
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input name="ADD" type="submit" id="ADD" value="ADD" class="btn btn-info" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+</html>

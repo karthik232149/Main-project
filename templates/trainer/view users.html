@@ -1,0 +1,31 @@
+{% extends 'trainer/homeindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/Aiyoga//#about">
+  <table class="pull-left">
+    <tr>
+      <th scope="row"><input type="text" name="textfield" /></th>
+      <td><input name="Search" type="submit" id="Search" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row">Sl no </th>
+      <td>User</td>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td><img name="" src="{{ i.Photo }}" width="100" height="32" alt="" /><br>
+      {{ i.Name }}   &nbsp;</td>
+      <td><a href="/Aiyoga/chat1/{{ i.LOGIN.id }}" class="btn btn-danger">Chat</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

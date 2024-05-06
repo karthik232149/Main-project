@@ -1,0 +1,312 @@
+{% extends 'trainer/homeindex.html' %}
+{% block body %}
+
+<head>
+    <title>Pagination Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination ul {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+        .pagination li {
+            display: inline;
+            margin-right: 5px;
+        }
+        .pagination li a {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+        }
+        .pagination li a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<form id="form1" name="form1" method="post" action="/Aiyoga/Viewdietchart_post/#about">
+{% csrf_token %}
+ <h1 align="center"> View diet chart</h1>
+  <table class="pull-left">
+    <tr>
+      <th scope="row"><input type="text" name="textfield" /></th>
+      <td><input name="Search" type="submit" id="Search" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+<br>
+<br>
+  <table class="table table-bordered">
+  <thead>
+      <tr>
+      <th>SL NO </th>
+      <th scope="row">MENU </th>
+      <th>QUANTITY</th>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Obesity</th>
+        <th>Blood_pressure</th>
+        <th>Diabetes</th>
+        <th>Cholesterol</th>
+        <th>Alcohol_use</th>
+        <th>Drug_use</th>
+        <th>Smoking</th>
+        <th>Headaches</th>
+        <th>Asthma</th>
+        <th>Heart_problems</th>
+        <th>Cancer</th>
+        <th>Stroke</th>
+        <th>Bone_joint</th>
+        <th>Kidney_problem</th>
+        <th>Liver_problems</th>
+        <th>Depression</th>
+        <th>Allergies</th>
+        <th>Arthritis</th>
+        <th>Pregnancy</th>
+        <th> Bmi </th>
+        <th>Time</th>
+
+    </tr>
+
+  </thead>
+      {% for i in data %}
+    <tr>
+      <th scope="row">&nbsp;{{ forloop.counter }}</th>
+      <td>{{ i.menu}}</td>
+      <td>{{ i.quantity }}&nbsp;</td>
+          <td>{{ i.Height}}</td>
+      <td>{{ i.Weight }}&nbsp;</td>
+      <td>{{ i.Age }}</td>
+        <td>{{ i.Gender}}</td>
+      <td>{{ i.Obesity }}&nbsp;</td>
+      <td>{{ i.Blood_pressure }}</td>
+       <td>{{ i.Diabetes}}</td>
+      <td>{{ i.Cholesterol }}&nbsp;</td>
+      <td>{{ i.Alcohol_use }}</td>
+          <td>{{ i.Drug_use}}</td>
+      <td>{{ i.Smoking }}&nbsp;</td>
+      <td>{{ i.Headaches }}</td>
+        <td>{{ i.Asthma}}</td>
+      <td>{{ i.Heart_problems }}&nbsp;</td>
+      <td>{{ i.Cancer }}</td>
+       <td>{{ i.Stroke}}</td>
+      <td>{{ i.Bone_joint }}&nbsp;</td>
+      <td>{{ i.Kidney_problem }}</td>
+          <td>{{ i.Liver_problems}}</td>
+      <td>{{ i.Depression }}&nbsp;</td>
+      <td>{{ i.Allergies }}</td>
+      <td>{{ i.Arthritis}}</td>
+      <td>{{ i.Pregnancy }}&nbsp;</td>
+      <td>{{ i.Bmi }}</td>
+          <td>{{ i.Time }}</td>
+
+
+
+      <td><a href="/Aiyoga/Trainer_Editdietchart/{{ i.id }}#about" class="btn btn-info">Edit</a></td>
+      <td><a href="/Aiyoga/Trainer_Deletedietchart/{{ i.id }}" class="btn btn-danger" onclick="return confirm('Are You Sure?')">Delete</a></td>
+      {% endfor %}
+  </table>
+
+
+    <div class="pagination">
+        <ul class="pagination">
+            <li><a href="#" data-direction="prev">&laquo; Previous</a></li>
+            <li><a href="#" data-direction="next">Next &raquo;</a></li>
+        </ul>
+    </div>
+</form>
+
+<script>
+$(document).ready(function(){
+    var rowsPerPage = 6; // Number of rows per page
+    var currentPage = 1; // Current page
+    var totalRows = $(".table-bordered tbody tr").length; // Total number of rows
+
+    // Function to show/hide rows based on pagination
+    function showPage(page) {
+        var start = (page - 1) * rowsPerPage;
+        var end = start + rowsPerPage;
+        $(".table-bordered tbody tr").hide().slice(start, end).show();
+    }
+
+    // Initial page load
+    showPage(currentPage);
+
+    // Function to handle pagination button clicks
+    $(".pagination").on("click", "li a", function(e){
+        e.preventDefault();
+        var direction = $(this).data("direction");
+        if (direction === "prev" && currentPage > 1) {
+            currentPage--;
+        } else if (direction === "next" && currentPage < Math.ceil(totalRows / rowsPerPage)) {
+            currentPage++;
+        }
+        showPage(currentPage);
+    });
+});
+</script>
+
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagination Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination ul {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+        .pagination li {
+            display: inline;
+            margin-right: 5px;
+        }
+        .pagination li a {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+        }
+        .pagination li a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<form id="form1" name="form1" method="post" action="/Aiyoga/Viewdietchart_post/#about">
+    {% csrf_token %}
+    <h1 align="center"> View diet chart</h1>
+    <table class="pull-left">
+        <tr>
+            <th scope="row"><input type="text" name="textfield" /></th>
+            <td><input name="Search" type="submit" id="Search" value="Search" class="btn btn-success" /></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table class="table table-bordered">
+        <tr>
+            <th>SL NO </th>
+            <th scope="row">MENU </th>
+            <th>QUANTITY</th>
+             <th>Height</th>
+        <th>Weight</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Obesity</th>
+        <th>Blood_pressure</th>
+        <th>Diabetes</th>
+        <th>Cholesterol</th>
+        <th>Alcohol_use</th>
+        <th>Drug_use</th>
+        <th>Smoking</th>
+        <th>Headaches</th>
+        <th>Asthma</th>
+        <th>Heart_problems</th>
+        <th>Cancer</th>
+        <th>Stroke</th>
+        <th>Bone_joint</th>
+        <th>Kidney_problem</th>
+        <th>Liver_problems</th>
+        <th>Depression</th>
+        <th>Allergies</th>
+        <th>Arthritis</th>
+        <th>Pregnancy</th>
+        <th> Bmi </th>
+        <th>Time</th>
+
+
+            <!-- Add your other table headers here -->
+        </tr>
+        {% for i in data %}
+        <tr>
+            <th scope="row">&nbsp;{{ forloop.counter }}</th>
+            <td>{{ i.menu}}</td>
+            <td>{{ i.quantity }}&nbsp;</td>
+              <td>{{ i.Height}}</td>
+      <td>{{ i.Weight }}&nbsp;</td>
+      <td>{{ i.Age }}</td>
+        <td>{{ i.Gender}}</td>
+      <td>{{ i.Obesity }}&nbsp;</td>
+      <td>{{ i.Blood_pressure }}</td>
+       <td>{{ i.Diabetes}}</td>
+      <td>{{ i.Cholesterol }}&nbsp;</td>
+      <td>{{ i.Alcohol_use }}</td>
+          <td>{{ i.Drug_use}}</td>
+      <td>{{ i.Smoking }}&nbsp;</td>
+      <td>{{ i.Headaches }}</td>
+        <td>{{ i.Asthma}}</td>
+      <td>{{ i.Heart_problems }}&nbsp;</td>
+      <td>{{ i.Cancer }}</td>
+       <td>{{ i.Stroke}}</td>
+      <td>{{ i.Bone_joint }}&nbsp;</td>
+      <td>{{ i.Kidney_problem }}</td>
+          <td>{{ i.Liver_problems}}</td>
+      <td>{{ i.Depression }}&nbsp;</td>
+      <td>{{ i.Allergies }}</td>
+      <td>{{ i.Arthritis}}</td>
+      <td>{{ i.Pregnancy }}&nbsp;</td>
+      <td>{{ i.Bmi }}</td>
+          <td>{{ i.Time }}</td>
+
+            <!-- Add your other table data here -->
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="pagination">
+        <ul class="pagination">
+            <li><a href="#" data-direction="prev">&laquo; Previous</a></li>
+            <li><a href="#" data-direction="next">Next &raquo;</a></li>
+        </ul>
+    </div>
+</form>
+
+<script>
+$(document).ready(function(){
+    var rowsPerPage = 10; // Number of rows per page
+    var currentPage = 1; // Current page
+    var totalRows = $(".table-bordered tbody tr").length; // Total number of rows
+
+    // Function to show/hide rows based on pagination
+    function showPage(page) {
+        var start = (page - 1) * rowsPerPage;
+        var end = start + rowsPerPage;
+        $(".table-bordered tbody tr").hide().slice(start, end).show();
+    }
+
+    // Initial page load
+    showPage(currentPage);
+
+    // Function to handle pagination button clicks
+    $(".pagination").on("click", "li a", function(e){
+        e.preventDefault();
+        var direction = $(this).data("direction");
+        if (direction === "prev" && currentPage > 1) {
+            currentPage--;
+        } else if (direction === "next" && currentPage < Math.ceil(totalRows / rowsPerPage)) {
+            currentPage++;
+        }
+        showPage(currentPage);
+    });
+});
+</script>
+
+</body>
+</html>
+

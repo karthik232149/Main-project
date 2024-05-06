@@ -1,0 +1,120 @@
+
+{% extends 'Trainer/homeindex.html' %}
+{% block body %}
+     <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<form action="/Aiyoga/Trainer_edit_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#button").hide();
+
+                // email validation
+                $("#textfield2").keyup(function () {
+                    var a = $("#textfield2").val();
+                    $.ajax({
+                        url: '/Aiyoga/reg/',
+                        method: 'POST',
+                        data: {'textfield2': a},
+                        success: function (data) {
+                            if (data.status === 'True') {
+                                $("#button").hide();
+                                document.getElementById('uu').textContent = 'E-mail already exists';
+                            } else {
+                                document.getElementById('uu').style.color = 'green'
+                                document.getElementById('uu').textContent = 'E-mail available';
+
+                                $("#button").show();
+                            }
+                        }
+                    });
+                });
+
+                $("#button").hide();
+
+                // phone validation
+
+{#                $("#textfield4").keyup(function () {#}
+{#                    var a = $("#textfield4").val();#}
+{#                    var phoneno = new RegExp('[6-9][0-9]{9}$');#}
+{##}
+{#                    if (!phoneno.test(a)) {#}
+{#                        document.getElementById('phoneval').textContent = 'Phone number should be 10 digits and start with numbers 6-9';#}
+{#                    } else {#}
+{#                        document.getElementById('phoneval').textContent = '';#}
+{#                    }#}
+{#                });#}
+            });
+        </script>
+{% csrf_token %}
+
+  <table class="table table-bordered">
+    <tr>
+      <input name="id" type="hidden" value="{{ data.id }}">
+      <th scope="row">Name</th>
+      <td><input type="text" value="{{ data.Name }}" name="textfield"  pattern="[A-Za-z ]+" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><input type="text" id="email" name="textfield2" value="{{ data.EmaiL }}" pattern="[a-z_0-9]{2,30}[@][a-z]{2,10}[.][a-z.]{2,20}" class="form-control" />
+      <span id="uu"></span>
+      </td>
+    </tr>
+    <tr>
+      <th height="36" scope="row">Phone</th>
+      <td><input type="text" name="textfield3"value="{{ data.Phone }}" pattern="[6789][0123456789]{9}" maxlength="10" required class="form-control"/></td>
+    </tr>
+      <tr>
+      <th height="36" scope="row">Experience</th>
+      <td><input type="text" name="textfield8" value="{{ data.Experience }}"  required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Place</th>
+      <td><input type="text" name="textfield4"value="{{ data.PLACE }}" pattern="[A-Za-z ]+" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Post</th>
+      <td><input type="text" name="textfield7" value="{{ data.Post }}" class="form-control" pattern="[A-Za-z ]+" required/></td>
+    </tr>
+    <tr>
+      <th scope="row">Pin</th>
+      <td><input type="text" name="textfield5"value="{{ data.Pin }}" pattern="[6][0123456789]{5}" maxlength="6" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Dob</th>
+      <td><input type="date" id="dob" name="textfield6"value="{{ data.Dob|date:'Y-m-d'}}" required class="form-control"  /></td>
+    </tr>
+     <tr>
+      <th scope="row">Gender</th>
+      <td><select name="RadioGroup1" class="form-control">
+
+          <option value="Male" {% if data.Gender == "Male" %} selected {% endif %}>Male</option>
+          <option value="Female" {% if data.Gender == "Female" %} selected {% endif %}>Female</option>
+          <option value="Others" {% if data.Gender == "Others" %} selected {% endif %}>Others</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th scope="row">Photo</th>
+      <td><img src="{{ data.Photo }}" width="100" height="100">
+          <input type="file" name="Photo" /></td>
+    </tr>
+    <tr>
+      <th scope="row">&nbsp;</th>
+      <td><input name="Update" type="submit" id="Update" value="Update"  class="btn btn-info"/></td>
+    </tr>
+  </table>
+</form>
+<script>
+    document.getElementById("dob").addEventListener("click", function () {
+        let currentYY = parseInt(new Date().toJSON().slice(0, 4))-18;
+        let currentMM = new Date().toJSON().slice(5, 7);
+        let currentDD = new Date().toJSON().slice(8, 10);
+        var fdob = currentYY.toString()+'-'+currentMM.toString()+'-'+currentDD.toString()
+        this.setAttribute('max',fdob);
+    })
+</script>
+
+
+
+{% endblock %}
+
